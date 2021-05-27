@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WeeklyScheduleDelete</class>
+ <widget class="QDialog" name="WeeklyScheduleDelete">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>381</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QComboBox" name="Selectday">
+      <item>
+       <property name="text">
+        <string>mon</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>tue</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>wed</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>thr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>fri</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>sat</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>sun</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="WeekScheduleList"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Delete_btn">
+      <property name="text">
+       <string>주간 일정 제거</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
