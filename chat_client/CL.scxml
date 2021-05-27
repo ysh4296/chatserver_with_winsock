@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="CL" qt:editorversion="4.8.0" xmlns:qt="http://www.qt.io/2015/02/scxml-ext">
+    <parallel id="1">
+        <qt:editorinfo geometry="446.71;367.63;-60;-50;120;100" scenegeometry="446.71;367.63;386.71;317.63;120;100"/>
+    </parallel>
+</scxml>
