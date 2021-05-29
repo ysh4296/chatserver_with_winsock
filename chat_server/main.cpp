@@ -46,9 +46,9 @@ int main() {
 		wFile.close();
 		int wsInit = WSAStartup(ver, &data);
 		if (wsInit != 0) {
-			cout << "À©¼Ó ÃÊ±âÈ­ ½ÇÆÐ" << endl;
+			cout << "ìœˆì† ì´ˆê¸°í™” ì‹¤íŒ¨" << endl;
 		}
-		cout << "À©¼Ó ÃÊ±âÈ­ ¼º°ø" << endl;
+		cout << "ìœˆì† ì´ˆê¸°í™” ì„±ê³µ" << endl;
 		_mkdir("c:/server");
 		_mkdir("c:/server/schedule/daily");
 		_mkdir("c:/server/schedule/weekly");
@@ -63,17 +63,17 @@ int main() {
 		listen(listensocket, SOMAXCONN);
 		FD_ZERO(&Fd);
 		FD_SET(listensocket, &Fd);
-		cout << "listensockÀ» master¿¡ Ãß°¡" << endl;
+		cout << "listensockì„ masterì— ì¶”ê°€" << endl;
 		while (1) {
 			fd_set copy = Fd;
 			int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
-			cout << "select ½ÇÇà" << socketCount << "¿¡ ÀÌº¥Æ® ¹ß»ý" << endl;
+			cout << "select ì‹¤í–‰" << socketCount << "ì— ì´ë²¤íŠ¸ ë°œìƒ" << endl;
 			for (int i = 0; i < socketCount; i++) {
 				SOCKET sock = copy.fd_array[i];
 				if (sock == listensocket)
 				{
 					SOCKET client = accept(listensocket, nullptr, nullptr);
-					cout << "¼ÒÄÏ accept" << endl;
+					cout << "ì†Œì¼“ accept" << endl;
 					FD_SET(client, &Fd);
 				}
 				else {
@@ -85,7 +85,7 @@ int main() {
 						FD_CLR(sock, &Fd);
 					}
 					else {
-						if (strcmp(buf, "Signin") == 0) {//clientÀÇ login ¿äÃ»
+						if (strcmp(buf, "Signin") == 0) {//clientì˜ login ìš”ì²­
 						   //thread Signin
 							thread SIGN(&Sign, sock);
 							SIGN.detach();
@@ -94,20 +94,20 @@ int main() {
 							thread LOGIN(&Log, sock);
 							LOGIN.detach();
 						}
-						//else if (strcmp(buf, "Messanger") == 0) {
-						//	cout << "Messanger in" << endl;
-						//	buf[MAX_BUFFER_SIZE];
-						//	ZeroMemory(buf, MAX_BUFFER_SIZE);
-						//	int byteIn = recv(sock, buf, MAX_BUFFER_SIZE, 0);
-						//	if (byteIn <= 0) {
-						//		closesocket(sock);
-						//		FD_CLR(sock, &Fd);
-						//	}
-						//	else {
-						//		thread Messange(&Message, sock, buf);
-						//		Messange.detach();
-						//	}
-						//}
+						else if (strcmp(buf, "Messanger") == 0) {
+							cout << "Messanger in" << endl;
+							buf[MAX_BUFFER_SIZE];
+							ZeroMemory(buf, MAX_BUFFER_SIZE);
+							int byteIn = recv(sock, buf, MAX_BUFFER_SIZE, 0);
+							if (byteIn <= 0) {
+								closesocket(sock);
+								FD_CLR(sock, &Fd);
+							}
+							else {
+								thread Messange(&Message, sock, buf);
+								Messange.detach();
+							}
+						}
 						else if (strcmp(buf, "TimeTable") == 0) {
 							cout << "TimeTable in" << endl;
 							buf[MAX_BUFFER_SIZE];
@@ -119,31 +119,10 @@ int main() {
 							}
 							else {
 								thread TimeTable(&Table, sock, buf);
-								cout << "Á¢¼Ó:" << buf << endl;
+								cout << "ì ‘ì†:" << buf << endl;
 								TimeTable.detach();
 							}
 						}
-						//¸Þ¼¼Áö ¼ö½Å
-						//event ¼ö½Å
-						//recv ÇöÀç clientÀÇ »óÅÂ¸¦ ÀÔ·Â¹Þ°í
-						//switch(msg)
-
-						//thread ±¸ºÐ detach
-						{
-							//case ±¸ºÐ
-							{
-								//login();
-
-								//sendmsg();
-
-								//plusfri();
-
-								//makemultichat();
-
-								//msgread(currid,file);
-							}
-						}
-
 					}
 				}
 			}
