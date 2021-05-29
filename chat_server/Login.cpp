@@ -27,21 +27,21 @@ int Login::logging(SOCKET client) {
 	str = "enter your Id and Password";
 
 	send(client, str.c_str(), MAX_BUFFER_SIZE, 0);
-	//do {
-		Id_Bytein = tool::Recv(client, Id); //¾ÆÀÌµğ ¹Ş±â
+	do {
+		Id_Bytein = tool::Recv(client, Id); //ì•„ì´ë”” ë°›ê¸°
 
 		str = "enter your Id and Password";
 
 		send(client, str.c_str(), MAX_BUFFER_SIZE, 0);
 
-		Password_Bytein = tool::Recv(client, Password);//ºñ¹ø ¹Ş±â
+		Password_Bytein = tool::Recv(client, Password);//ë¹„ë²ˆ ë°›ê¸°
 
 		CheckId = 0;
 		CheckPassword = 0;
 		
 		for (iter = user_Info.begin(); iter != user_Info.end(); (++iter)) {
 			if (iter->first == Id) {
-				CheckId = 1;//Id°¡ µî·ÏµÇ¾î ÀÖÀ½
+				CheckId = 1;//Idê°€ ë“±ë¡ë˜ì–´ ìˆìŒ
 				if (iter->second == Password) {
 					CheckPassword = 1;
 				}
@@ -56,7 +56,7 @@ int Login::logging(SOCKET client) {
 			IdSocketInfo.insert(pair<string, SOCKET>(Id, client));
 			tool::SocketToTxt("C:/server/Id_Socket_map.txt", IdSocketInfo);
 		}
-		//Id°¡ µî·ÏµÇ¾î ÀÖÁö ¾ÊÀ½
+		//Idê°€ ë“±ë¡ë˜ì–´ ìˆì§€ ì•ŠìŒ
 		else if (CheckId != 1 || CheckPassword != 1) {
 			str = "Ether your id or password is wrong";
 			send(client, str.c_str(), MAX_BUFFER_SIZE, 0);
@@ -64,7 +64,7 @@ int Login::logging(SOCKET client) {
 
 
 
-	//} while (CheckId == 1 && CheckPassword == 1);
+	} while (CheckId == 1 && CheckPassword == 1);
 
 
 
