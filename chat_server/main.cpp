@@ -94,20 +94,6 @@ int main() {
 							thread LOGIN(&Log, sock);
 							LOGIN.detach();
 						}
-						else if (strcmp(buf, "Messanger") == 0) {
-							cout << "Messanger in" << endl;
-							buf[MAX_BUFFER_SIZE];
-							ZeroMemory(buf, MAX_BUFFER_SIZE);
-							int byteIn = recv(sock, buf, MAX_BUFFER_SIZE, 0);
-							if (byteIn <= 0) {
-								closesocket(sock);
-								FD_CLR(sock, &Fd);
-							}
-							else {
-								thread Messange(&Message, sock, buf);
-								Messange.detach();
-							}
-						}
 						else if (strcmp(buf, "TimeTable") == 0) {
 							cout << "TimeTable in" << endl;
 							buf[MAX_BUFFER_SIZE];
