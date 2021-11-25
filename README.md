@@ -22,4 +22,5 @@ winsock 헤더파일을 이용한 통신을 구현하는 프로젝트 입니다.
 
 
 -------------------------------------------------------------------
-각 폴더속 manual.pdf 파일에 간단한 실행 설명을 작성하였다.
+최종 결론
+[**결론**](https://github.com/ysh4296/chatserver_with_winsock/blob/main/chat_server/manual.pdf)
